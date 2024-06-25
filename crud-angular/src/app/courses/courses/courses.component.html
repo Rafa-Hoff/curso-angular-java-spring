@@ -1,1 +1,23 @@
-<p>courses works!</p>
+<table mat-table [dataSource]="courses" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Curso </th>
+    <td mat-cell *matCellDef="let course"> {{ course.name }} </td>
+  </ng-container>
+  <!--O angular possui uma diretiva chamada ng for, que irá iterar em todos os elementos da lista, e vai declarar temporariamente uma variável
+      para cada elemento dessa lista-->
+
+  <!-- Category Column -->
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef> Categoria </th>
+    <td mat-cell *matCellDef="let course"> {{ course.category }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> <!--Para cada registro da lista, será mostrado as colunas que foram declaradas na variável "displayedColumn"-->
+</table>
+
