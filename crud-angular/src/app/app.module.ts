@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     MatToolbarModule,
-    HttpClientModule //manter disponivel de forma global.
+    HttpClientModule, //manter disponivel de forma global.     Lembrete: HttpClientModule esta descontinuado.
   ],
   providers: [
     provideAnimationsAsync()
