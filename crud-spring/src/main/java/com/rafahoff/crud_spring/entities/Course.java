@@ -1,5 +1,6 @@
 package com.rafahoff.crud_spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,6 +8,7 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonProperty("_id") // Manter a compatibilidade com o front-end ao tranformar de json para objeto e vice-versa.
     private Long id;
 
     @Column(length = 200, nullable = false)

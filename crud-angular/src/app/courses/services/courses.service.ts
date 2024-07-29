@@ -9,7 +9,7 @@ import { Course } from '../model/course';
 })
 export class CoursesService {
 
-  private readonly API = '/assets/courses.json'; //temporario, apenas para testes.
+  private readonly API = 'api/courses'; //temporario, apenas para testes.
 
   //No angular, o service é utilizado através da injeção de dependecia, mas como tera uma conexao com uma Api,
   //sera utilizado uma chamada AJAX, que é uma chamada assíncrona pro servidor. No Angular, podemos fazer isso com o HTTP client:
