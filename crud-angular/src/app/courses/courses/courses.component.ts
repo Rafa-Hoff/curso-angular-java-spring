@@ -5,6 +5,7 @@ import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -14,13 +15,15 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 export class CoursesComponent implements OnInit {
 
   courses$: Observable<Course[]>;
-  displayedColumns = ['name', 'category'];
+  displayedColumns = ['name', 'category', 'actions'];  //e preciso adicionar as novas colunas aqui para que o design criado apareca.
 
   // coursesService: CoursesService;
 
   constructor(
     private coursesService: CoursesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     // this.courses = [];
     // this.coursesService = new CoursesService();
@@ -40,5 +43,9 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onAdd() {
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 }
