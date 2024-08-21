@@ -3,7 +3,8 @@
 
     <mat-toolbar color="primary">Detalhes do Curso</mat-toolbar>
 
-    <form [formGroup]="form">
+    <!--Formulario para preencher com os dados do novo curso-->
+    <form [formGroup]="form" class="min-width">
       <mat-form-field class="full-width">
         <input matInput placeholder="Nome" formControlName="name">
       </mat-form-field>
@@ -23,6 +24,7 @@
 
   </mat-card-content>
 
+  <!--Botoes de salvar e cancelar-->
   <mat-card-actions>
     <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
     <button mat-raised-button (click)="onCancel()">Cancelar</button>
