@@ -26,7 +26,7 @@ export class CoursesService {
     );
   }
 
-  save(record: Course) { //recebera um registro, e sera responsavel por salvar o curso na api, utilizando o metodo POST
+  save(record: Partial<Course>) { //recebera um registro, e sera responsavel por salvar o curso na api, utilizando o metodo POST
     return this.httpclient.post<Course>(this.API, record);
   }
 }

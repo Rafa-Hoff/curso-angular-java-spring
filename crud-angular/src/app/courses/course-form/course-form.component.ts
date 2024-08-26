@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CoursesService } from '../services/courses.service';
@@ -11,18 +11,19 @@ import { CoursesService } from '../services/courses.service';
   styleUrl: './course-form.component.scss'
 })
 export class CourseFormComponent {
+  //o FormBuilder tem toda a logica que vai ajudar a criar o form group.
+  form = this.formBuilder.group({
+    //fazendo a declaracao dessa forma, é atribuido um tipo para as variaveis, antes era o tipo "any".
+    name: [''], //ou name = new FormControl<string | null> ('');
+    category: ['']
+  });
 
-  form: FormGroup;
-
-  constructor(private formBuilder: FormBuilder,
+  //Ao utilizar o NonNullableFormBuilder ao inves do FormBuilder, impede o uso do null em todos os campos
+  constructor(private formBuilder: NonNullableFormBuilder,
     private service: CoursesService,
     private snackBar: MatSnackBar,
-    private location: Location) {   //o FormBuilder tem toda a logica que vai ajudar a criar o form group.
+    private location: Location) {
 
-    this.form = this.formBuilder.group({
-      name: [null],
-      category: [null]
-    });
   }
 
   onSubmit() { //chama a funcao save() de servico para enviar os dados para a api
